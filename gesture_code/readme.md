@@ -18,3 +18,5 @@ Library Download (Python - pip 모듈 사용)
 - open-cv
 - mediapipe
 - numpy
+
+----------

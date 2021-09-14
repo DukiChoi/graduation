@@ -75,6 +75,13 @@ while cap.isOpened():
                 org = (int(res.landmark[0].x * img.shape[1]), int(res.landmark[0].y * img.shape[0]))
                 cv2.putText(img, text=coin_gesture[idx].upper(), org=(org[0], org[1] + 20), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2)
 
+                ## 뚜기 최!
+                # 검지 손가락 좌표 (카메라 이미지 크기에 대한 비율) : x,y
+                # github의 그림을 따라서 보면 8번 좌표가 검지 손가락 끝
+                x,y = res.landmark[8].x, res.landmark[8].y
+                cv2.putText(img, text='(%.2f, %.2f)'%(x,y), org=(org[0], org[1] - 20), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2)
+                
+
                 num = idx
                 if num == 9:
                     num = 2
@@ -83,11 +90,8 @@ while cap.isOpened():
                     total_num += num
 
             
-
-
-
             mp_drawing.draw_landmarks(img, res, mp_hands.HAND_CONNECTIONS)
-
+            
 
         if total_num != 0:
             cv2.putText(img, text="Total Num is %i"%(total_num), org=(int(img.shape[1] / 3), int(img.shape[0] / 3)), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1.5, color=(0, 0, 255), thickness=3)

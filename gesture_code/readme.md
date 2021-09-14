@@ -7,9 +7,9 @@ reference : https://github.com/kairess/Rock-Paper-Scissors-Machine
 
 ----------
 
-'''
+```
 python gesture.py
-'''
+```
 
 ----------
 

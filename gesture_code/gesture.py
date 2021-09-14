@@ -9,7 +9,7 @@ max_num_hands = 2
 
 # gesture 기존 값 활용
 coin_gesture = {
-    0:'zero', 1:'one', 9:'two', 2:'two2', 3:'three', 4:'four', 5:'five',
+    0:'zero', 1:'one', 9:'two', 2:'two', 3:'three', 4:'four', 5:'five',
     6:'delete', 8:'mouse_left', 10:'ok'
 }
 

@@ -7,6 +7,12 @@ reference : https://github.com/kairess/Rock-Paper-Scissors-Machine
 
 ----------
 
+'''
+python gesture.py
+'''
+
+----------
+
 Pipeline 개요
 
 1. keypoint detection : [mediapipe](https://google.github.io/mediapipe/)

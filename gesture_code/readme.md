@@ -21,6 +21,5 @@ Library Download (Python - pip 모듈 사용)
 
 ----------
 
-## Hand Landmark (keypoint) Label
-[Link!!](https://google.github.io/mediapipe/solutions/hands.html)
+## Hand Landmark (keypoint) Label [링크!!](https://google.github.io/mediapipe/solutions/hands.html)
 ![hand_landmark](https://user-images.githubusercontent.com/88364973/133178241-a09bdef2-4f22-473f-bfa4-7ccf86824886.png)

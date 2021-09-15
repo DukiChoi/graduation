@@ -103,9 +103,9 @@ while cap.isOpened():
 
                 '--------------병근 코드------------------------'
                 #마우스 움직여주기!!!!
-                if (num == 1 or num ==2):
+                if (keyboard_input==0 and num !=8):
                     mouse.moveTo(screen_width*x,screen_height*y,0.1)
-                elif (num == 8):
+                elif (keyboard_input==0 and num == 8):
                     mouse.click(screen_width*x,screen_height*y, button='left')
 
 
@@ -185,7 +185,7 @@ while cap.isOpened():
             mp_drawing.draw_landmarks(img, res, mp_hands.HAND_CONNECTIONS)
 
 
-        if total_num != 10:
+        if total_num != 0:
             cv2.putText(img, text="Total Num is %i"%(total_num), org=(int(img.shape[1] / 3), int(img.shape[0] / 3)), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1.5, color=(0, 0, 255), thickness=3)
 
 

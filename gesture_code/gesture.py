@@ -112,13 +112,13 @@ while cap.isOpened():
                 # 키보드 입력 시작하기 위해 ok 사인으로 입력 여부 결정
                 if(num ==10 and keyboard_input ==0):
                     count = count +1
-                    if count == 100:
+                    if count == 50:
                         print('KeyboardInput Mode')
                         keyboard_input = 1
                         count = 0
                 elif(num == 10 and keyboard_input ==1):
                     count = count + 1
-                    if count == 100:
+                    if count == 70:
                         print('MouseInput Mode')
                         keyboard_input = 0
                         count = 0
@@ -126,58 +126,13 @@ while cap.isOpened():
                 if(keyboard_input==1 and num !=10):
                     if num == 6:
                         count = count + 1
-                        if count == 50:
+                        if count == 70:
                             print('delete')
                             count = 0
-                    elif (total_num == 1):
-                        count = count + 1
-                        if count == 50:
-                            print(1)
-                            count = 0
-                    elif (total_num == 2):
-                        count = count + 1
-                        if count == 50:
-                            print(2)
-                            count = 0
-                    elif (total_num == 3):
+                    else:
                         count = count + 1
                         if count == 70:
-                            print(3)
-                            count = 0
-                    elif (total_num == 4):
-                        count = count + 1
-                        if count == 50:
-                            print(4)
-                            count = 0
-                    elif (total_num == 5):
-                        count = count + 1
-                        if count == 70:
-                            print(5)
-                            count = 0
-                    elif (total_num == 6):
-                        count = count + 1
-                        if count == 50:
-                            print(6)
-                            count = 0
-                    elif (total_num == 7):
-                        count = count + 1
-                        if count == 50:
-                            print(7)
-                            count = 0
-                    elif (total_num == 8):
-                        count = count + 1
-                        if count == 50:
-                            print(8)
-                            count = 0
-                    elif (total_num == 9):
-                        count = count + 1
-                        if count == 50:
-                            print(9)
-                            count = 0
-                    elif (total_num == 0):
-                        count = count + 1
-                        if count == 70:
-                            print(0)
+                            print(total_num)
                             count = 0
 
                 '--------------------------------------'

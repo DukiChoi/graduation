@@ -5,12 +5,15 @@ import pyautogui as mouse
 import tkinter as tk
 
 
+#스크린 정보 받아오기
 root =tk.Tk()
 screen_height = root.winfo_screenheight()
 screen_width = root.winfo_screenwidth()
+
 #숫자 입력한 시간 체크
 count = 0
 keyboard_input = 0
+
 # 2개 손 활용
 max_num_hands = 2
 
@@ -98,36 +101,36 @@ while cap.isOpened():
                 if 0 <= num < 6:
                     total_num += num
 
-                '--------------------------------------'
+                '--------------병근 코드------------------------'
                 #마우스 움직여주기!!!!
                 if (num == 1 or num ==2):
                     mouse.moveTo(screen_width*x,screen_height*y,0.1)
                 elif (num == 8):
                     mouse.click(screen_width*x,screen_height*y, button='left')
 
-                if(keyboard_input ==0):
-                #키보드 입력 시작하기 위해 ok 사인으로 입력 여부 결정
-                    if(num == 10):
-                        count = count +1
-                        if count == 70:
-                            print('Get keyboardinput')
-                            keyboard_input = 1
-                            count = 0
-                elif (num == 10 and keyboard_input ==1):
+
+                # 키보드 입력 시작하기 위해 ok 사인으로 입력 여부 결정
+                if(num ==10 and keyboard_input ==0):
+                    count = count +1
+                    if count == 100:
+                        print('KeyboardInput Mode')
+                        keyboard_input = 1
+                        count = 0
+                elif(num == 10 and keyboard_input ==1):
                     count = count + 1
-                    if count == 70:
-                        print('No keyboardinput')
+                    if count == 100:
+                        print('MouseInput Mode')
                         keyboard_input = 0
                         count = 0
-               #여기서부터는 진짜 키보드 입력
-                if(keyboard_input==1):
+                #여기서부터는 진짜 키보드 입력
+                if(keyboard_input==1 and num !=10):
                     if num == 6:
                         count = count + 1
                         if count == 50:
                             print('delete')
                             count = 0
                     elif (total_num == 1):
-                        count = count+1
+                        count = count + 1
                         if count == 50:
                             print(1)
                             count = 0
@@ -136,42 +139,42 @@ while cap.isOpened():
                         if count == 50:
                             print(2)
                             count = 0
-                    elif (total_num == 3 and keyboard_input == 1):
+                    elif (total_num == 3):
                         count = count + 1
                         if count == 70:
                             print(3)
                             count = 0
-                    elif (total_num == 4 and keyboard_input == 1):
+                    elif (total_num == 4):
                         count = count + 1
                         if count == 50:
                             print(4)
                             count = 0
-                    elif (total_num == 5 and keyboard_input == 1):
+                    elif (total_num == 5):
                         count = count + 1
                         if count == 70:
                             print(5)
                             count = 0
-                    elif (total_num == 6 and keyboard_input == 1):
+                    elif (total_num == 6):
                         count = count + 1
                         if count == 50:
                             print(6)
                             count = 0
-                    elif (total_num == 7 and keyboard_input == 1):
+                    elif (total_num == 7):
                         count = count + 1
                         if count == 50:
                             print(7)
                             count = 0
-                    elif (total_num == 8 and keyboard_input == 1):
+                    elif (total_num == 8):
                         count = count + 1
                         if count == 50:
                             print(8)
                             count = 0
-                    elif (total_num == 9 and keyboard_input == 1):
+                    elif (total_num == 9):
                         count = count + 1
                         if count == 50:
                             print(9)
                             count = 0
-                    elif (total_num == 0 and keyboard_input == 1):
+                    elif (total_num == 0):
                         count = count + 1
                         if count == 70:
                             print(0)
@@ -179,15 +182,10 @@ while cap.isOpened():
 
                 '--------------------------------------'
 
-
-
-
-
-
             mp_drawing.draw_landmarks(img, res, mp_hands.HAND_CONNECTIONS)
 
 
-        if total_num != 0:
+        if total_num != 10:
             cv2.putText(img, text="Total Num is %i"%(total_num), org=(int(img.shape[1] / 3), int(img.shape[0] / 3)), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1.5, color=(0, 0, 255), thickness=3)
 
 

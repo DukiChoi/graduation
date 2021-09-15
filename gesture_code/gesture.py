@@ -96,80 +96,82 @@ while cap.isOpened():
 
                 '--------------------------------------'
                 #마우스 움직여주기!!!!
-                if num == 1:
+                if (num == 1 or num ==2):
                     mouse.moveTo(2560*x,1440*y,0.1)
-                elif num == 8:
+                elif (num == 8):
                     mouse.click(2560*x,1440*y, button='left')
 
+                if(keyboard_input ==0):
                 #키보드 입력 시작하기 위해 ok 사인으로 입력 여부 결정
-                if(num == 10 and keyboard_input == 0):
-                    count = count +1
-                    if count == 100:
-                        print('Get keyboardinput')
-                        keyboard_input = 1
-                        count = 0
-                elif (num == 10 and keyboard_input == 1):
+                    if(num == 10):
+                        count = count +1
+                        if count == 70:
+                            print('Get keyboardinput')
+                            keyboard_input = 1
+                            count = 0
+                elif (num == 10 and keyboard_input ==1):
                     count = count + 1
-                    if count == 100:
+                    if count == 70:
                         print('No keyboardinput')
                         keyboard_input = 0
                         count = 0
                #여기서부터는 진짜 키보드 입력
-                if num == 6:
-                    count = count + 1
-                    if count == 50:
-                        print('delete')
-                        count = 0
-                elif (total_num == 1 and keyboard_input == 1):
-                    count = count+1
-                    if count == 50:
-                        print(1)
-                        count = 0
-                elif (total_num == 2 and keyboard_input == 1):
-                    count = count + 1
-                    if count == 50:
-                        print(2)
-                        count = 0
-                elif (total_num == 3 and keyboard_input == 1):
-                    count = count + 1
-                    if count == 50:
-                        print(3)
-                        count = 0
-                elif (total_num == 4 and keyboard_input == 1):
-                    count = count + 1
-                    if count == 50:
-                        print(4)
-                        count = 0
-                elif (total_num == 5 and keyboard_input == 1):
-                    count = count + 1
-                    if count == 100:
-                        print(5)
-                        count = 0
-                elif (total_num == 6 and keyboard_input == 1):
-                    count = count + 1
-                    if count == 50:
-                        print(6)
-                        count = 0
-                elif (total_num == 7 and keyboard_input == 1):
-                    count = count + 1
-                    if count == 50:
-                        print(7)
-                        count = 0
-                elif (total_num == 8 and keyboard_input == 1):
-                    count = count + 1
-                    if count == 50:
-                        print(8)
-                        count = 0
-                elif (total_num == 9 and keyboard_input == 1):
-                    count = count + 1
-                    if count == 50:
-                        print(9)
-                        count = 0
-                elif (total_num == 0 and keyboard_input == 1):
-                    count = count + 1
-                    if count == 100:
-                        print(0)
-                        count = 0
+                if(keyboard_input==1):
+                    if num == 6:
+                        count = count + 1
+                        if count == 50:
+                            print('delete')
+                            count = 0
+                    elif (total_num == 1):
+                        count = count+1
+                        if count == 50:
+                            print(1)
+                            count = 0
+                    elif (total_num == 2):
+                        count = count + 1
+                        if count == 50:
+                            print(2)
+                            count = 0
+                    elif (total_num == 3 and keyboard_input == 1):
+                        count = count + 1
+                        if count == 70:
+                            print(3)
+                            count = 0
+                    elif (total_num == 4 and keyboard_input == 1):
+                        count = count + 1
+                        if count == 50:
+                            print(4)
+                            count = 0
+                    elif (total_num == 5 and keyboard_input == 1):
+                        count = count + 1
+                        if count == 70:
+                            print(5)
+                            count = 0
+                    elif (total_num == 6 and keyboard_input == 1):
+                        count = count + 1
+                        if count == 50:
+                            print(6)
+                            count = 0
+                    elif (total_num == 7 and keyboard_input == 1):
+                        count = count + 1
+                        if count == 50:
+                            print(7)
+                            count = 0
+                    elif (total_num == 8 and keyboard_input == 1):
+                        count = count + 1
+                        if count == 50:
+                            print(8)
+                            count = 0
+                    elif (total_num == 9 and keyboard_input == 1):
+                        count = count + 1
+                        if count == 50:
+                            print(9)
+                            count = 0
+                    elif (total_num == 0 and keyboard_input == 1):
+                        count = count + 1
+                        if count == 70:
+                            print(0)
+                            count = 0
 
                 '--------------------------------------'
 

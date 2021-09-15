@@ -2,8 +2,12 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import pyautogui as mouse
-import time
+import tkinter as tk
 
+
+root =tk.Tk()
+screen_height = root.winfo_screenheight()
+screen_width = root.winfo_screenwidth()
 #숫자 입력한 시간 체크
 count = 0
 keyboard_input = 0
@@ -97,9 +101,9 @@ while cap.isOpened():
                 '--------------------------------------'
                 #마우스 움직여주기!!!!
                 if (num == 1 or num ==2):
-                    mouse.moveTo(2560*x,1440*y,0.1)
+                    mouse.moveTo(screen_width*x,screen_height*y,0.1)
                 elif (num == 8):
-                    mouse.click(2560*x,1440*y, button='left')
+                    mouse.click(screen_width*x,screen_height*y, button='left')
 
                 if(keyboard_input ==0):
                 #키보드 입력 시작하기 위해 ok 사인으로 입력 여부 결정

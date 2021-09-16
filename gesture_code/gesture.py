@@ -90,7 +90,7 @@ while cap.isOpened():
                 ## 뚜기 최!
                 # 검지 손가락 좌표 (카메라 이미지 크기에 대한 비율) : x,y
                 # github의 그림을 따라서 보면 8번 좌표가 검지 손가락 끝
-                x,y = res.landmark[8].x, res.landmark[8].y
+                x,y = res.landmark[5].x, res.landmark[5].y
                 cv2.putText(img, text='(%.2f, %.2f)'%(x,y), org=(org[0], org[1] - 20), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2)
 
                 num = idx
@@ -103,9 +103,9 @@ while cap.isOpened():
 
                 '--------------병근 코드------------------------'
                 #마우스 움직여주기!!!!
-                if (keyboard_input==0 and num !=8):
+                if (keyboard_input==0 and num !=0):
                     mouse.moveTo(screen_width*x,screen_height*y,0.1)
-                elif (keyboard_input==0 and num == 8):
+                elif (keyboard_input==0 and num == 0):
                     mouse.click(screen_width*x,screen_height*y, button='left')
 
 

@@ -1,0 +1,285 @@
+:root {
+    --primary-color: #0E4A84;
+    --secondary-color: white;
+    --primary-font-size: 135%;
+    --secondary-font-size: 100%;
+}
+
+#root {
+    position: relative;
+    width: auto;
+    cursor: default;
+}
+
+.select_and_pay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.nav {
+    width: 80%;
+    height: 12.5%;
+    vertical-align: center;
+    float: left;
+}
+.nav ul {
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    width: 80%;
+    height: 12.5%;
+}
+.nav .category_tab {
+    position: relative;
+    display: block;
+    padding: auto;
+    margin: auto;
+    list-style: none;
+    height: 100%;
+    width: 25%;
+    float: left;
+    text-align: center;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+}
+
+.nav .category_tab.selected {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.nav .category_tab div{
+    display: flex;
+    height: 100%;
+    text-align: center;
+    font-size: var(--primary-font-size);
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar {
+    float: right;
+    background-color: var(--primary-color);
+    margin: 0px;
+    padding: 0px;
+    width: 20%;
+    height: 100%;
+}
+
+.sidebar .cart_title{
+    display: flex;
+    width: 100%;
+    height: 12.5%;
+    color: var(--secondary-color);
+    text-align: center;
+    font-size: var(--primary-font-size);
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar .selected_menu_container{
+    width: 90%;
+    height: 45%;
+    background-color: var(--secondary-color);
+    margin: 0% 5% 5% 5%;
+}
+
+.sidebar .selected_menu_container .selected_menu_label{
+    width: 100%;
+    height: 9%;
+}
+
+.sidebar .selected_menu_container .selected_menu_label div {
+    display: flex;
+    width: 49.5%;
+    height: 1.5em;
+    color: var(--primary-color);
+    border-bottom: 0.0001px solid var(--primary-color);
+    float:left;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar .selected_menu_container .selected_menu_label .label_title{
+    border-right: 0.0001px solid var(--primary-color);
+}
+
+.sidebar .selected_menu_container ul{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 80%;
+    overflow: scroll;
+}
+
+.sidebar .selected_menu_container .selected_menu{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 1.5em;
+    clear: both;
+    color:var(--primary-color);
+}
+
+.sidebar .selected_menu_container .selected_menu div{
+    display: flex;
+    height: 1.5em;
+    float: left;
+    align-items: center;
+}
+
+.sidebar .selected_menu_container .selected_menu .name {
+    width: 75%;
+}
+
+.sidebar .selected_menu_container .selected_menu .count {
+    width: 25%;
+}
+
+.sidebar .selected_menu_container .selected_menu_total {
+    width: 100%;
+    height: 10%;
+}
+
+.sidebar .selected_menu_container .selected_menu_total div {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    color: var(--primary-color);
+    border-top: 0.0001px solid var(--primary-color);
+    float:left;
+    justify-content: center;
+    align-items: center;
+}
+.sidebar .selected_menu_container .selected_menu_total .total_title {
+    width: 32.5%;
+}
+
+.sidebar .selected_menu_container .selected_menu_total .total_amount {
+    width: 67%;
+    justify-content: right;
+}
+
+.sidebar .pay_button {
+    display: flex;
+    width: 90%;
+    height: 25%;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    margin: 0% 5% 5% 5%;
+    text-align: center;
+    font-size: var(--primary-font-size);
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar .home_button {
+    display: flex;
+    width: 90%;
+    height: 13%;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    margin: 0% 5% 5% 5%;
+    text-align: center;
+    font-size: var(--primary-font-size);
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+    width: 80%;
+    height: 87.5%;
+    margin: 0px;
+    padding: 0px;
+    float: left;
+}
+
+.container .arrow_container {
+    display: flex;
+    width: 12.5%;
+    height: 100%;
+    float: left;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .arrow_container .arrow{
+    border-style: solid; 
+    background-color: var(--secondary-color);
+    height: 0; 
+    margin: 0 10px; 
+    width: 0;
+}
+
+.container .arrow_container .arrow.left{
+    border-color: transparent var(--primary-color) transparent transparent; 
+    border-width: 40px 50px 40px 0;
+}
+
+.container .arrow_container .arrow.right{
+    border-color: transparent transparent transparent var(--primary-color); 
+    border-width: 40px 0 40px 50px;
+}
+
+
+.container .mid_container {
+    width: 75%;
+    height: 100%;
+    float: left;
+}
+
+.container .mid_container ul {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container .mid_container ul .menu_card {
+    list-style: none;
+    width: 21.6%;
+    height: 45%;
+    padding: 0;
+    margin: 1.5%;
+    color: var(--primary-color);
+    float: left;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.container .mid_container ul .menu_card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+.container .mid_container ul .menu_card .menu_img {
+    width: 90%;
+    height: 60%;
+    padding: 5%;
+}
+
+.container .mid_container ul .menu_card div {
+    display: flex;
+    width: 90%;
+    height: 15%;
+    margin: 0;
+    padding: 0 5%;
+    align-items: center;
+}
+
+.container .mid_container ul .menu_card .menu_name {
+    justify-content: center;
+}
+
+.container .mid_container ul .menu_card .menu_price {
+    justify-content: right;
+}
+
+.container .right_container {
+    width: 12.5%;
+    height: 100%;
+    float: left;
+}

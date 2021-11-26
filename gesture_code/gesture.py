@@ -21,7 +21,7 @@ max_num_hands = 2
 # gesture 기존 값 활용
 coin_gesture = {
     0:'zero', 1:'one', 9:'two', 2:'two', 3:'three', 4:'four', 5:'five',
-    6:'delete', 8:'mouse_left(spiderman)', 10:'ok'
+    6:'delete', 8:'(spiderman)', 10:'ok'
 }
 
 # MediaPipe hands model
@@ -108,7 +108,7 @@ while cap.isOpened():
                     mouse.moveTo(screen_width*x,screen_height*y,0.1)
                 elif (keyboard_input==0 and num == 0):
                     mouse.click(screen_width*x,screen_height*y, button='left')
-
+                    print("mouseclick_left")
 
                 # 키보드 입력 시작하기 위해 ok 사인으로 입력 여부 결정
                 if(num ==10 and keyboard_input ==0):

@@ -97,6 +97,9 @@ class SlideFrame extends React.Component {
     this.handleTab = this.handleTab.bind(this);
     this.handleCard = this.handleCard.bind(this);
   }
+  componentDidMount(){
+    document.title = '한양식당';
+  }
   goSelectAndPay(e){
     if(e.target.className === 'to_go'){
       

@@ -11,10 +11,13 @@ class Nav extends React.Component {
     render(){
         let listItems = this.props.categories.map((category, idx) => 
             <CategoryTab idx={idx} selected={this.props.selected} key={idx} 
-                category={category} handleTab={this.props.handleTab}/>
+                category={category} handleTab={this.props.handleTab} handlePageNum={this.props.handlePageNum}/>
         );
         return (
-        <div className='nav' onClick={this.props.handleTab}>
+        <div className='nav' onClick={(e) => {
+            this.props.handleTab(e);
+            this.props.handlePageNum(0);
+        }}>
             <ul>{listItems}</ul>
         </div>
         );
@@ -214,7 +217,7 @@ class SelectAndPay extends React.Component {
         return (
             <div className='select_and_pay'>
                 <Nav categories={this.props.categories} selected={this.props.selected} 
-                    handleTab={this.props.handleTab}/>
+                    handleTab={this.props.handleTab} handlePageNum={this.handlePageNum}/>
                 <SideBar cart={this.props.cart} goHome={this.props.goHome} handlePlusMinus={this.props.handlePlusMinus}/>
                 <Container cards={this.props.cards} selected={this.props.selected}
                     categories={this.props.categories} handleCard={this.props.handleCard}

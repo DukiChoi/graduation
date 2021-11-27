@@ -43,7 +43,9 @@ class SelectedMenu extends React.Component {
         return(
             <li className='selected_menu'>
                 <div className='name'>{this.props.menu['name']}</div>
+                <button className='minus'>-</button>
                 <div className='count'>{this.props.menu['count']}개</div>
+                <button className='plus'>+</button>
             </li>
         );
     }
@@ -64,7 +66,7 @@ class SelectedMenuContainer extends React.Component{
             <SelectedMenu menu={menu} key={menu['name']}/>
         );
         return (
-            <div className='selected_menu_container'>
+            <div className='selected_menu_container' onClick={this.props.handlePlusMinus}>
                 <SelectedMenuLabel/>
                 <ul>{list}</ul>
                 <SelectedMenuTotal cart={this.props.cart}/>
@@ -111,7 +113,7 @@ class SideBar extends React.Component {
         return (
             <div className='sidebar'>
                 <div className='cart_title'>장바구니</div>
-                <SelectedMenuContainer cart={this.props.cart}/>
+                <SelectedMenuContainer cart={this.props.cart} handlePlusMinus={this.props.handlePlusMinus}/>
                 <PayButton pay={this.pay}/>
                 <HomeButton goHome={this.props.goHome}/>
             </div>
@@ -213,9 +215,9 @@ class SelectAndPay extends React.Component {
             <div className='select_and_pay'>
                 <Nav categories={this.props.categories} selected={this.props.selected} 
                     handleTab={this.props.handleTab}/>
-                <SideBar cart={this.props.cart} goHome={this.props.goHome}/>
+                <SideBar cart={this.props.cart} goHome={this.props.goHome} handlePlusMinus={this.props.handlePlusMinus}/>
                 <Container cards={this.props.cards} selected={this.props.selected}
-                    categories={this.props.categories} handleCard={this.props.handleCard} 
+                    categories={this.props.categories} handleCard={this.props.handleCard}
                     menuPageNum={this.state.menuPageNum} handlePageNum={this.handlePageNum}/>
             </div>
         );

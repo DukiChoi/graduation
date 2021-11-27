@@ -95,7 +95,9 @@ class SlideFrame extends React.Component {
     this.goSelectAndPay = this.goSelectAndPay.bind(this);
     this.goHome = this.goHome.bind(this);
     this.handleTab = this.handleTab.bind(this);
+    this.handleCart = this.handleCart.bind(this);
     this.handleCard = this.handleCard.bind(this);
+    this.handlePlusMinus = this.handlePlusMinus.bind(this);
   }
   componentDidMount(){
     document.title = '한양식당';
@@ -130,26 +132,58 @@ class SlideFrame extends React.Component {
         });
     }
   }
+  handleCart(name, increment, state){
+    let price = null;
+    let cart = state.cart;
+    let updated = false;
+    let selected = parseInt(state.selected);
+    let curCards = cards[selected][categories[selected]];
+    curCards.forEach(function(card){
+      if(name === card.name){
+        price = parseInt(card.price);
+      }
+    });
+    for(let i = 0; i < cart.length; i++){
+        if(cart[i].name === name){
+          if(parseInt(cart[i].count) + increment === 0){
+            cart[i].count = 0;
+            cart = cart.filter(function(item){
+              return (parseInt(item.count) !== 0);
+            });
+          }
+          else{
+            cart[i].count = parseInt(cart[i].count) + increment;
+          }
+          updated = true;
+          break;
+        }
+      }
+    if(updated === false){
+        cart.push({name: name, price: price, count: 1});
+    }
+    return {cart: cart};
+  }
   handleCard(e){
-    let card = e.target.parentNode, name, price;
+    let card = e.target.parentNode, name;
     if(card.className === 'menu_card'){
-        name = card.querySelector('.menu_name').innerText;
-        price = parseInt(card.querySelector('.menu_price').innerText.replaceAll(',', '').replaceAll('￦',''));
-        this.setState(function(state){
-            let cart = state.cart;
-            let updated = false;
-            for(let i = 0; i < cart.length; i++){
-                if(cart[i].name === name){
-                    cart[i].count += 1;
-                    updated = true;
-                    break;
-                }
-            }
-            if(updated === false){
-                cart.push({name: name, price: price, count: 1});
-            }
-            return cart;
-        });
+      name = card.querySelector('.menu_name').innerText;
+      let cart = this.handleCart(name, 1, this.state);
+      this.setState(function(state){
+        return cart;
+      });
+    }
+  }
+  handlePlusMinus(e){
+    let className = e.target.className;
+    if(className === 'minus' || className === 'plus'){
+      let menuName = e.target.parentNode.querySelector('.name').innerText;
+      let increment = 0;
+      if(className === 'plus') increment = 1;
+      else if(className === 'minus') increment = -1;
+      let cart = this.handleCart(menuName, increment, this.state);
+      this.setState(function(state){
+        return cart;
+      });
     }
   }
   render(){
@@ -157,7 +191,8 @@ class SlideFrame extends React.Component {
       <div id='slide_frame'>
         <HereOrToGo goSelectAndPay={this.goSelectAndPay}/>
         <SelectAndPay categories={categories} cards={cards} goHome={this.goHome} pageNum={this.state.pageNum}
-          handleTab={this.handleTab} handleCard={this.handleCard} selected={this.state.selected} cart={this.state.cart}/>
+          handleTab={this.handleTab} handleCard={this.handleCard} selected={this.state.selected} 
+          cart={this.state.cart} handlePlusMinus={this.handlePlusMinus}/>
       </div>
     )
   }

@@ -7,12 +7,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  --primary-color: #0E4A84;
+  --secondary-color: white;
+  --xx-large-font-size: 3em;
+  --large-font-size: 1.5em;
+  --medium-font-size: 1em;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 html, body, #root {
-  width: 100%;
+  width: 100vw;
+  height: 97vh;
+  overflow: hidden;
+}
+
+#slide_frame {
+  position: absolute;
+  width: 200vw;
   height: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  transition: left 0.15s ease-out;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
 }

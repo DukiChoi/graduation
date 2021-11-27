@@ -76,7 +76,7 @@ class SelectedMenuContainer extends React.Component{
 class PayButton extends React.Component{
     render(){
         return (
-            <div className='pay_button'>
+            <div className='pay_button' onClick={this.props.pay}>
                 결제하기
             </div>
         );
@@ -86,7 +86,7 @@ class PayButton extends React.Component{
 class HomeButton extends React.Component{
     render(){
         return (
-            <div className='home_button'>
+            <div className='home_button' onClick={this.props.goHome}>
                 처음으로
             </div>
         );
@@ -94,31 +94,50 @@ class HomeButton extends React.Component{
 }
 
 class SideBar extends React.Component {
+    constructor(props){
+        super(props);
+        this.pay = this.pay.bind(this);
+    }
+    pay(){
+        let phoneNumber = prompt('휴대폰 번호를 입력해 주세요(예시:01012345678)');
+        if(phoneNumber === null) return;
+        while(phoneNumber.match(/[0-9]{10,11}/) === null){
+            alert('올바른 번호 형식이 아닙니다');
+            phoneNumber = prompt('휴대폰 번호를 입력해 주세요(예시:01012345678)');
+        }
+        alert(phoneNumber + '로 결제가 완료되었습니다!');
+    }
     render(){
         return (
             <div className='sidebar'>
                 <div className='cart_title'>장바구니</div>
                 <SelectedMenuContainer cart={this.props.cart}/>
-                <PayButton/>
-                <HomeButton/>
+                <PayButton pay={this.pay}/>
+                <HomeButton goHome={this.props.goHome}/>
             </div>
         );
     }
 }
 
 function ArrowButton(props){
+    if(props.display === false) return null;
+    let increment = 0;
+    if(props.dir === 'right') increment = 1;
+    else if(props.dir === 'left') increment = -1;
     return (
-        <button className={'arrow ' + props.dir}>
-
-        </button>
+        <button className={'arrow ' + props.dir} onClick={(e) => {props.handlePageNum(parseInt(props.menuPageNum) + increment, e)}}/>
     );
 }
 
 class ArrowContainer extends React.Component {
     render(){
+        let display = null;
+        if(this.props.menuPageNum === 0 && this.props.dir === 'left') display = false;
+        if(this.props.menuPageNum === this.props.maxPageNum && this.props.dir === 'right') display = false;
         return (
             <div className={'arrow_container ' + this.props.dir}>
-                <ArrowButton dir={this.props.dir}/>
+                <ArrowButton dir={this.props.dir} display={display} menuPageNum={this.props.menuPageNum}
+                    handlePageNum={this.props.handlePageNum}/>
             </div>
         );
     }
@@ -135,7 +154,6 @@ function Card(props) {
 }
 
 class CardList extends React.Component {
-    
     render(){
         let category_idx = this.props.selected;
         let category_name = this.props.categories[category_idx];
@@ -143,8 +161,10 @@ class CardList extends React.Component {
         let list = cards.map((card) => 
             <Card card={card} key={card.name}/>
         );
+        let start = this.props.menuPageNum * 8;
+        let end = start + 8;
         return (
-            <ul>{list}</ul>
+            <ul>{list.slice(start, end)}</ul>
         );
     }
 }
@@ -154,7 +174,7 @@ class MidContainer extends React.Component {
         return (
             <div className='mid_container'>
                 <CardList cards={this.props.cards} selected={this.props.selected}
-                    categories={this.props.categories}/>
+                    categories={this.props.categories} menuPageNum={this.props.menuPageNum}/>
             </div>
         );
     }
@@ -162,12 +182,18 @@ class MidContainer extends React.Component {
 
 class Container extends React.Component {
     render(){
+        let categoryNum = parseInt(this.props.selected);
+        let categories = this.props.categories;
+        let cards = this.props.cards;
+        let categoryName = categories[categoryNum];
         return (
             <div className='container' onClick={this.props.handleCard}>
-                <ArrowContainer dir='left'/>
+                <ArrowContainer dir='left' menuPageNum={this.props.menuPageNum} 
+                    maxPageNum={Math.floor((cards[categoryNum][categoryName].length - 1) / 8)} handlePageNum={this.props.handlePageNum} />
                 <MidContainer cards={this.props.cards} selected={this.props.selected}
-                    categories={this.props.categories}/>
-                <ArrowContainer dir='right'/>
+                    categories={this.props.categories} menuPageNum={this.props.menuPageNum}/>
+                <ArrowContainer dir='right' menuPageNum={this.props.menuPageNum} 
+                    maxPageNum={Math.floor((cards[categoryNum][categoryName].length - 1 ) / 8)} handlePageNum={this.props.handlePageNum} />
             </div>
         );
     }
@@ -176,53 +202,21 @@ class Container extends React.Component {
 class SelectAndPay extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-            selected: 0,
-            cart: []
-        };
-        this.handleTab = this.handleTab.bind(this);
-        this.handleCard = this.handleCard.bind(this);
+        this.state = {menuPageNum: 0};
+        this.handlePageNum = this.handlePageNum.bind(this);
     }
-    handleTab(e){
-        if(e.target.tagName === 'DIV'){
-            let idx = parseInt(e.target.parentNode.id);
-            this.setState(function(state) {
-                if(state.selected !== idx){
-                    return {selected: idx};
-                }
-            });
-        }
-    }
-    handleCard(e){
-        let card = e.target.parentNode, name, price;
-        if(card.className === 'menu_card'){
-            name = card.querySelector('.menu_name').innerText;
-            price = parseInt(card.querySelector('.menu_price').innerText.replaceAll(',', '').replaceAll('￦',''));
-            this.setState(function(state){
-                let cart = state.cart;
-                let updated = false;
-                for(let i = 0; i < cart.length; i++){
-                    if(cart[i].name === name){
-                        cart[i].count += 1;
-                        updated = true;
-                        break;
-                    }
-                }
-                if(updated === false){
-                    cart.push({name: name, price: price, count: 1});
-                }
-                return cart;
-            });
-        }
+    handlePageNum(pageNum){
+        this.setState(() => ({menuPageNum: pageNum}));
     }
     render(){
         return (
             <div className='select_and_pay'>
-                <Nav categories={this.props.categories} selected={this.state.selected} 
-                    handleTab={this.handleTab}/>
-                <SideBar cart={this.state.cart}/>
-                <Container cards={this.props.cards} selected={this.state.selected}
-                    categories={this.props.categories} handleCard={this.handleCard}/>
+                <Nav categories={this.props.categories} selected={this.props.selected} 
+                    handleTab={this.props.handleTab}/>
+                <SideBar cart={this.props.cart} goHome={this.props.goHome}/>
+                <Container cards={this.props.cards} selected={this.props.selected}
+                    categories={this.props.categories} handleCard={this.props.handleCard} 
+                    menuPageNum={this.state.menuPageNum} handlePageNum={this.handlePageNum}/>
             </div>
         );
     }

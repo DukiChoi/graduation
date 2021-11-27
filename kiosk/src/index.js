@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import SelectAndPay from './SelectAndPay';
+import HereOrToGo from './HereOrToGo';
 
 const categories = ['메인메뉴', '세트메뉴', '사이드메뉴', '음료'];
 const cards = [
@@ -76,7 +77,81 @@ const cards = [
       name: '콜라7', price: 2100},
     { img: 'https://e7.pngegg.com/pngimages/888/490/png-clipart-fizzy-drinks-coca-cola-zero-mcdonald-s-chicken-mcnuggets-chicken-nugget-coca-cola-pint-glass-milkshake.png',
       name: '콜라8', price: 2200},
+    { img: 'https://e7.pngegg.com/pngimages/888/490/png-clipart-fizzy-drinks-coca-cola-zero-mcdonald-s-chicken-mcnuggets-chicken-nugget-coca-cola-pint-glass-milkshake.png',
+      name: '콜라9', price: 2300},
   ] }
 ];
 
-ReactDOM.render(<SelectAndPay categories={categories} cards={cards} />, document.getElementById('root'));
+class SlideFrame extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {pageNum: 0, toGo: null, selected: 0, cart: []};
+    this.goSelectAndPay = this.goSelectAndPay.bind(this);
+    this.goHome = this.goHome.bind(this);
+    this.handleTab = this.handleTab.bind(this);
+    this.handleCard = this.handleCard.bind(this);
+  }
+  goSelectAndPay(e){
+    if(e.target.className === 'to_go'){
+      
+    }
+    this.setState(function(state){
+      let toGo = null;
+      if(e.target.className === 'here') toGo = false;
+      else if(e.target.className === 'to_go') toGo = true;
+      document.getElementById('slide_frame').style.left = '-100vw';
+      return {pageNum: 1, toGo: toGo};
+    });
+  }
+  goHome(){
+    if(window.confirm('처음으로 돌아가면 장바구니가 초기화됩니다. 돌아갈까요?') === true){
+      this.setState(function(state){
+        document.getElementById('slide_frame').style.left = '0';
+        return {pageNum: 0, toGo: null, selected: 0, cart: []};
+      });
+    }
+  }
+  handleTab(e){
+    if(e.target.tagName === 'DIV'){
+        let idx = parseInt(e.target.parentNode.id);
+        this.setState(function(state) {
+            if(state.selected !== idx){
+                return {selected: idx};
+            }
+        });
+    }
+  }
+  handleCard(e){
+    let card = e.target.parentNode, name, price;
+    if(card.className === 'menu_card'){
+        name = card.querySelector('.menu_name').innerText;
+        price = parseInt(card.querySelector('.menu_price').innerText.replaceAll(',', '').replaceAll('￦',''));
+        this.setState(function(state){
+            let cart = state.cart;
+            let updated = false;
+            for(let i = 0; i < cart.length; i++){
+                if(cart[i].name === name){
+                    cart[i].count += 1;
+                    updated = true;
+                    break;
+                }
+            }
+            if(updated === false){
+                cart.push({name: name, price: price, count: 1});
+            }
+            return cart;
+        });
+    }
+  }
+  render(){
+    return (
+      <div id='slide_frame'>
+        <HereOrToGo goSelectAndPay={this.goSelectAndPay}/>
+        <SelectAndPay categories={categories} cards={cards} goHome={this.goHome} pageNum={this.state.pageNum}
+          handleTab={this.handleTab} handleCard={this.handleCard} selected={this.state.selected} cart={this.state.cart}/>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<SlideFrame/>, document.getElementById('root'));

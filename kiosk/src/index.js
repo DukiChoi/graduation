@@ -22,7 +22,9 @@ const cards = [
     { img: 'https://img.seoul.co.kr/img/upload/2017/02/19/SSI_20170219191203.jpg',
     name: '와퍼7', price: 7600 },
     { img: 'https://img.seoul.co.kr/img/upload/2017/02/19/SSI_20170219191203.jpg',
-    name: '와퍼8', price: 7700 }
+    name: '와퍼8', price: 7700 },
+    { img: 'https://img.seoul.co.kr/img/upload/2017/02/19/SSI_20170219191203.jpg',
+    name: '와퍼9', price: 7800 }
   ] }, 
   { '세트메뉴': [
     { img: 'http://newsimg.hankookilbo.com/2015/07/13/201507130987385773_1.jpg',
@@ -40,7 +42,9 @@ const cards = [
     { img: 'http://newsimg.hankookilbo.com/2015/07/13/201507130987385773_1.jpg',
       name: '와퍼세트7', price: 9600},
     { img: 'http://newsimg.hankookilbo.com/2015/07/13/201507130987385773_1.jpg',
-      name: '와퍼세트8', price: 9700}
+      name: '와퍼세트8', price: 9700},
+    { img: 'http://newsimg.hankookilbo.com/2015/07/13/201507130987385773_1.jpg',
+      name: '와퍼세트9', price: 9800}
   ] },
   { '사이드메뉴': [
     { img: 'https://image.fmkorea.com/files/attach/images/486616/408/318/034/7223fdc397b3dc1e181b3933eb2caf04.png',
@@ -58,7 +62,9 @@ const cards = [
     { img: 'https://image.fmkorea.com/files/attach/images/486616/408/318/034/7223fdc397b3dc1e181b3933eb2caf04.png',
       name: '후렌치후라이7', price: 2600},
     { img: 'https://image.fmkorea.com/files/attach/images/486616/408/318/034/7223fdc397b3dc1e181b3933eb2caf04.png',
-      name: '후렌치후라이8', price: 2700}
+      name: '후렌치후라이8', price: 2700},
+    { img: 'https://image.fmkorea.com/files/attach/images/486616/408/318/034/7223fdc397b3dc1e181b3933eb2caf04.png',
+      name: '후렌치후라이9', price: 2800}
   ] },
   { '음료': [
     { img: 'https://e7.pngegg.com/pngimages/888/490/png-clipart-fizzy-drinks-coca-cola-zero-mcdonald-s-chicken-mcnuggets-chicken-nugget-coca-cola-pint-glass-milkshake.png',

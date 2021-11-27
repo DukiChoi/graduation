@@ -100,7 +100,7 @@ class SlideFrame extends React.Component {
     this.handlePlusMinus = this.handlePlusMinus.bind(this);
   }
   componentDidMount(){
-    document.title = '한양식당';
+    document.title = '한양버거';
   }
   goSelectAndPay(e){
     if(e.target.className === 'to_go'){

@@ -109,6 +109,7 @@ class SideBar extends React.Component {
         while(phoneNumber.match(/[0-9]{10,11}/) === null){
             alert('올바른 번호 형식이 아닙니다');
             phoneNumber = prompt('휴대폰 번호를 입력해 주세요(예시:01012345678)');
+            if(phoneNumber === null) return;
         }
         alert(phoneNumber + '로 결제가 완료되었습니다!');
     }

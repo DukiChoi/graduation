@@ -2,7 +2,7 @@
 import cv2
 import mediapipe as mp
 import numpy as np
-import pyautogui as mouse
+import pyautogui as gui
 import tkinter as tk
 
 
@@ -105,9 +105,9 @@ while cap.isOpened():
                 '--------------병근 코드------------------------'
                 #마우스 움직여주기!!!!
                 if (keyboard_input==0 and num !=0):
-                    mouse.moveTo(screen_width*x,screen_height*y,0.1)
+                    gui.moveTo(screen_width*x,screen_height*y,0.1)
                 elif (keyboard_input==0 and num == 0):
-                    mouse.click(screen_width*x,screen_height*y, button='left')
+                    gui.click(screen_width*x,screen_height*y, button='left')
                     print("mouseclick_left")
 
                 # 키보드 입력 시작하기 위해 ok 사인으로 입력 여부 결정
@@ -134,8 +134,8 @@ while cap.isOpened():
                         count = count + 1
                         if count == 70:
                             print(total_num)
+                            gui.typewrite(str(total_num))
                             count = 0
-
                 '--------------------------------------'
 
             mp_drawing.draw_landmarks(img, res, mp_hands.HAND_CONNECTIONS)

@@ -112,14 +112,16 @@ while cap.isOpened():
                 # 키보드 입력 시작하기 위해 ok 사인으로 입력 여부 결정
                 if (num == 10 and keyboard_input == 0):
                     count = count + 1
-                    if count == 50:
+                    if count == 30:
                         print('KeyboardInput Mode')
                         keyboard_input = 1
                         count = 0
                 elif (num == 10 and keyboard_input == 1):
                     count = count + 1
-                    if count == 70:
+                    if count == 50:
                         print('MouseInput Mode')
+                        print('enter')
+                        gui.press('enter')
                         keyboard_input = 0
                         count = 0
                 # 여기서부터는 진짜 키보드 입력
@@ -128,6 +130,7 @@ while cap.isOpened():
                         count = count + 1
                         if count == 70:
                             print('delete')
+                            gui.press('backspace')
                             count = 0
                     else:
                         count = count + 1

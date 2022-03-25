@@ -17,3 +17,6 @@ Participate : [J-Shine](https://github.com/J-Shine)
   * React를 이용하여 Single Page Application으로 제작
   * Data: Hard Coded
   * Surver: Node.js
+
+## Demo Video
+![Demo Video](./demo_final.gif)

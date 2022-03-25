@@ -2,7 +2,6 @@
 
 ## 0. 개요
 Web Camera -> Key-point Detection + Gesture Clustering -> Untact Keyboard, Mouse -> Kiosk Demo with Homepage
----
 Contributors Method 1,2,3 : [Wonseo-C](https://github.com/Wonseo-C), [DukiChoi](https://github.com/DukiChoi)
 Contributors Method 4 : [J-Shine](https://github.com/J-Shine)
 ---

@@ -19,4 +19,7 @@ Participate : [J-Shine](https://github.com/J-Shine)
   * Surver: Node.js
 
 ## Demo Video
-![Demo Video](./demo_final3.gif)
+### 1. Keyboard
+![Demo Video_keyboard](./demo_final3.gif)
+### 2. Mouse
+![Demo Video_mouse](./demo_final4.gif)

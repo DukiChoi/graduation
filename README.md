@@ -14,7 +14,7 @@ Contributors Method 4 : [J-Shine](https://github.com/J-Shine)
 ## 3. Method (3): Covert Keyboard and Mouse
   * ok 사인을 통해 전환
 
-## 4. Kiosc Web Page
+## 4. Kiosk Web Page
   * React를 이용하여 Single Page Application으로 제작
   * Data: Hard Coded
   * Surver: Node.js

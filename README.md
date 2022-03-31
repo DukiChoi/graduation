@@ -1,4 +1,4 @@
-# Hanyang Univ. Electric Engineering Graduate Project
+# Hanyang Univ. Electric Engineering Graduate Projec
 
 ***
 
